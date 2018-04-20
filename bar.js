@@ -5,10 +5,15 @@ d3.json("https://raw.githubusercontent.com/FreeCodeCamp/ProjectReferenceData/mas
   var paddingBottom = 20;
   var paddingLeft = 50;
   var paddingTop = 10;
+  var months = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"]
   
   var svg = d3.select("#main")
     .attr("width", w)
     .attr("height", h);
+  
+  var div = d3.select("body").append("div")	
+    .attr("class", "tooltip")				
+    .style("opacity", 0);
   
   //get gdp + date values from nested array
   var values = [];
@@ -51,8 +56,27 @@ d3.json("https://raw.githubusercontent.com/FreeCodeCamp/ProjectReferenceData/mas
     .attr("height", function(d) {
       return yScale(d[1]) - paddingBottom;
     })
-    .attr("width", ((w - paddingLeft) / data.data.length) + 1)
-    .attr("fill", "green");
+    .attr("width", Math.ceil((w - paddingLeft) / data.data.length))
+    .attr("class", "bar")
+    .on("mouseover", function(d, i) {
+      div.transition()		
+        .duration(0)		
+        .style("opacity", 0.9);	
+      div.html("<strong>" +
+               d[1] + 
+               " billion USD</strong><br>" + 
+               months[new Date(d[0]).getMonth()] +
+               " " +
+               new Date(d[0]).getFullYear()
+               )
+        .style("left", d3.event.pageX + "px")
+        .style("top", d3.event.pageY + "px")
+    })
+    .on("mouseout", function(d) {		
+      div.transition()		
+        .duration(500)		
+        .style("opacity", 0);	
+    });
   
   svg.append("g")
     .attr("class", "axis")
@@ -63,5 +87,5 @@ d3.json("https://raw.githubusercontent.com/FreeCodeCamp/ProjectReferenceData/mas
     .attr("class", "axis")
     .attr("transform", "translate(" + paddingLeft + ",-" + paddingTop + ")")
     .call(yAxis);
-  
+
 });
