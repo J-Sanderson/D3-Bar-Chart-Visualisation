@@ -7,7 +7,7 @@ d3.json("https://raw.githubusercontent.com/FreeCodeCamp/ProjectReferenceData/mas
   var paddingTop = 10;
   var months = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"]
   
-  var svg = d3.select("#main")
+  var svg = d3.select("#chart")
     .attr("width", w)
     .attr("height", h);
   
@@ -61,7 +61,7 @@ d3.json("https://raw.githubusercontent.com/FreeCodeCamp/ProjectReferenceData/mas
     .on("mouseover", function(d, i) {
       div.transition()		
         .duration(0)		
-        .style("opacity", 0.9);	
+        .style("opacity", 1);	
       div.html("<strong>" +
                d[1] + 
                " billion USD</strong><br>" + 
@@ -69,8 +69,8 @@ d3.json("https://raw.githubusercontent.com/FreeCodeCamp/ProjectReferenceData/mas
                " " +
                new Date(d[0]).getFullYear()
                )
-        .style("left", d3.event.pageX + "px")
-        .style("top", d3.event.pageY + "px")
+        .style("left", (d3.event.pageX + 15) + "px")
+        .style("top", (d3.event.pageY - 30) + "px")
     })
     .on("mouseout", function(d) {		
       div.transition()		

@@ -1,11 +1,29 @@
-#root {
+:root {
+  --darkgrn: #004304;
+  --lightgrn: #2D8633;
+  --background: #C1B896;
+  --pale: #F9F6E9
+}
+
+body {
+  color: black;
+  background-color:var(--background);
+  font-family: serif;
+}
+
+#main {
   width:900px;
   margin-left:auto;
   margin-right:auto;
+  margin-top: 20px;
+  padding: 10px;
+  background-color:var(--pale);
 }
 
 h1 {
   text-align:center;
+  margin:5px;
+  color:var(--darkgrn);
 }
 
 .axis path, .axis line {
@@ -20,17 +38,17 @@ h1 {
 }
 
 .bar {
-  fill: green;
+  fill: var(--darkgrn);
 }
 
 .bar:hover {
-  fill:blue;
+  fill:var(--lightgrn);
 }
 
 div.tooltip {	
     position: absolute;			
     text-align: center;				
-    padding: 2px;					
-    background: white;	
+    padding: 5px;					
+    background: var(--lightgrn);	
     border: 0px;					
 }
