@@ -12,6 +12,7 @@ body {
 }
 
 #main {
+  text-align:center;
   width:900px;
   margin-left:auto;
   margin-right:auto;
@@ -21,7 +22,6 @@ body {
 }
 
 h1 {
-  text-align:center;
   margin:5px;
   color:var(--darkgrn);
 }
@@ -45,10 +45,14 @@ h1 {
   fill:var(--lightgrn);
 }
 
-div.tooltip {	
-    position: absolute;			
-    text-align: center;				
-    padding: 5px;					
-    background: var(--lightgrn);	
-    border: 0px;					
+.d3-tip {	
+  position: absolute;			
+  text-align: center;				
+  padding: 5px;					
+  background: var(--lightgrn);	
+  border: 0px;
+}
+
+.d3-tip p {
+  margin: 0px;
 }
